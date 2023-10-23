@@ -69,7 +69,7 @@ const descriptionsBodies = [
   'Submission for startup pitch',
 ];
 
-const possibleResponses = [
+const possibleReactions = [
   'I disagree!',
   'I tried your algorithm, here were the results',
   'This was awesome',
@@ -85,37 +85,34 @@ const users = [];
 const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 // Gets a random full name
-const getRandomName = () =>
+const getRandomUser = () =>
   `${getRandomArrItem(names)} ${getRandomArrItem(names)}`;
 
-// Function to generate random videos that we can add to the database. Includes video responses.
-const getRandomVideos = (int) => {
+// Function to generate random Thoughts that we can add to the database. Includes thought reactions.
+const getRandomThoughts = (int) => {
   let results = [];
   for (let i = 0; i < int; i++) {
     results.push({
-      published: Math.random() < 0.5,
-      description: getRandomArrItem(descriptionsBodies),
-      advertiserFriendly: Math.random() < 0.5,
-      responses: [...getVideoResponses(3)],
+      reactions: [...getThoughtReactions(3)],
     });
   }
   return results;
 };
 
 // Create the responses that will be added to each video
-const getVideoResponses = (int) => {
+const getThoughtReactions = (int) => {
   if (int === 1) {
-    return getRandomArrItem(possibleResponses);
+    return getRandomArrItem(possibleReactions);
   }
   let results = [];
   for (let i = 0; i < int; i++) {
     results.push({
-      responseBody: getRandomArrItem(possibleResponses),
-      username: getRandomName(),
+      reactionBody: getRandomArrItem(possibleReactions),
+      username: getRandomUser(),
     });
   }
   return results;
 };
 
 // Export the functions for use in seed.js
-module.exports = { getRandomName, getRandomVideos, getRandomVideos };
+module.exports = { getRandomUser, getRandomThoughts, getThoughtReactions };
