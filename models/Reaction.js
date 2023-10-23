@@ -1,23 +1,25 @@
 const { Schema, Types } = require('mongoose');
 
-const responseSchema = new Schema(
+//Keep in mind this is not a model, rather a subdocument schema within the Thought model
+const reactionSchema = new Schema(
   {
     reactionId: {
       type: Schema.Types.ObjectId,
-      default: () => new Types.ObjectId(),
+      default: () => new Types.ObjectId()
     },
-    responseBody: {
+    reactionBody: {
       type: String,
       required: true,
       maxlength: 280,
     },
     username: {
       type: String,
-      required: true,
+      required: true
     },
     createdAt: {
       type: Date,
       default: Date.now,
+      get: (newDate) => newDate.toLocaleDateString()
     },
   },
   {
@@ -28,4 +30,4 @@ const responseSchema = new Schema(
   }
 );
 
-module.exports = responseSchema;
+module.exports = reactionSchema;
