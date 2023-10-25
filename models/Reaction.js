@@ -3,10 +3,6 @@ const { Schema, Types } = require('mongoose');
 //Keep in mind this is not a model, rather a subdocument schema within the Thought model
 const reactionSchema = new Schema(
   {
-    reactionId: {
-      type: Schema.Types.ObjectId,
-      default: () => new Types.ObjectId()
-    },
     reactionBody: {
       type: String,
       required: true,

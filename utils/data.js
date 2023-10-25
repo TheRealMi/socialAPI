@@ -1,58 +1,19 @@
 const names = [
-  'Aaran',
-  'Aaren',
-  'Aarez',
-  'Aarman',
-  'Aaron',
-  'Aaron-James',
-  'Aarron',
-  'Aaryan',
-  'Aaryn',
-  'Aayan',
-  'Aazaan',
-  'Abaan',
-  'Abbas',
-  'Abdallah',
-  'Abdalroof',
-  'Abdihakim',
-  'Abdirahman',
-  'Abdisalam',
-  'Abdul',
-  'Abdul-Aziz',
-  'Abdulbasir',
-  'Abdulkadir',
-  'Abdulkarem',
-  'Ze',
-  'Zechariah',
-  'Zeek',
-  'Zeeshan',
-  'Zeid',
-  'Zein',
-  'Zen',
-  'Zendel',
-  'Zenith',
-  'Zennon',
-  'Zeph',
-  'Zerah',
-  'Zhen',
-  'Zhi',
-  'Zhong',
-  'Zhuo',
-  'Zi',
-  'Zidane',
-  'Zijie',
-  'Zinedine',
-  'Zion',
-  'Zishan',
-  'Ziya',
-  'Ziyaan',
-  'Zohaib',
-  'Zohair',
-  'Zoubaeir',
-  'Zubair',
-  'Zubayr',
-  'Zuriel',
-  ``,
+  'StarGazer42',
+  'ElectricNinja',
+  'LunaWanderer',
+  'PixelPioneer',
+  'MysticWhisper',
+  'QuantumQuest',
+  'OceanBreeze23',
+  'CrimsonHaze',
+  'SolarFlare77',
+  'MidnightHowler',
+  'NeonSpecter',
+  'EnchantedGrove',
+  'CosmicPenguin',
+  'SilverShadow99',
+  'FireflyDreamer'
 ];
 
 const descriptionsBodies = [
@@ -79,14 +40,13 @@ const possibleReactions = [
   'Reply: The side effects of in app purchases on digital marketplaces',
 ];
 
-const users = [];
 
 // Get a random item given an array
 const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-// Gets a random full name
+// Gets a random username
 const getRandomUser = () =>
-  `${getRandomArrItem(names)} ${getRandomArrItem(names)}`;
+  `${getRandomArrItem(names)}`;
 
 // Function to generate random Thoughts that we can add to the database. Includes thought reactions.
 const getRandomThoughts = (int) => {
@@ -94,12 +54,14 @@ const getRandomThoughts = (int) => {
   for (let i = 0; i < int; i++) {
     results.push({
       reactions: [...getThoughtReactions(3)],
+      thoughtText: getRandomArrItem(descriptionsBodies),
+      username: getRandomUser()
     });
   }
   return results;
 };
 
-// Create the responses that will be added to each video
+// Create the reactions that will be added to each thought
 const getThoughtReactions = (int) => {
   if (int === 1) {
     return getRandomArrItem(possibleReactions);

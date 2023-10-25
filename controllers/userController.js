@@ -4,7 +4,9 @@ module.exports = {
   // get all users
   async getUsers(req, res) {
     try {
-      const users = await User.find().populate("thoughts");
+      const users = await User.find()
+      .populate("thoughts")
+      .populate("friends");
       res.json(users);
     } catch (err) {
       res.status(500).json(err);
@@ -13,7 +15,8 @@ module.exports = {
   // get single user & populated thought and friend data
   async getSingleUser(req, res) {
     try {
-      const user = await User.findOne({ _id: req.params.userId }).populate("thoughts");
+      const user = await User.findOne({ _id: req.params.userId })
+      .populate("thoughts");
 
       if (!user) {
         return res.status(404).json({ message: 'No user with that ID' });
@@ -69,8 +72,14 @@ module.exports = {
   async addFriend(req, res) {
     try {
       const user = await User.findOneAndUpdate(
-        { _id: req.body.userId },
+        { _id: req.params.userId },
         { $addToSet: { friends: req.params.friendId } },
+        { new: true }
+      );
+
+      const friend = await User.findOneAndUpdate(
+        { _id: req.params.friendId },
+        { $addToSet: { friends: req.params.userId } },
         { new: true }
       );
 
