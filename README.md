@@ -12,7 +12,7 @@ API for a social network web application where users can share their thoughts, r
 
 ## Installation
 
-You can access this project by clicking the following link: https://github.com/TheRealMi/EmployeeTracker
+You can access this project by clicking the following link: https://github.com/TheRealMi/socialAPI
 
 ## Usage
 1. Clone repo to your computer
@@ -21,7 +21,7 @@ You can access this project by clicking the following link: https://github.com/T
 4. Open insomnia to test the desired routes
 
 Watch the video below to see a walkthrough of the application:
-<a href="">![Application screenshot](./Assets/images/applicationScreenshot.PNG)()</a>
+<a href="https://watch.screencastify.com/v/reXJWTB8AtNcWGSrNLBP">![Application screenshot](./Assets/screenshot.PNG)()</a>
 
 ## Credits
 
